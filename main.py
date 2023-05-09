@@ -1,11 +1,16 @@
 import pygame
 from tkinter import *
 
-window = Tk()
+# window = Tk()
+#
+# window.title("8 - ball")
+#
+# window.configure(width=400, height=750)
+#
+# window.configure(bg='red')
+# window.mainloop()
 
-window.title("8 - ball")
+screen = pygame.display.set_mode((400, 750))
+background = pygame.image.load("district.png")
 
-window.configure(width=500, height=800)
-
-window.configure(bg='red')
-window.mainloop()
+screen.blit(background, (200, 375))
