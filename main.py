@@ -1,16 +1,17 @@
 import pygame
-from tkinter import *
+from pygame.locals import *
+pygame.init()
 
-# window = Tk()
-#
-# window.title("8 - ball")
-#
-# window.configure(width=400, height=750)
-#
-# window.configure(bg='red')
-# window.mainloop()
+screen = pygame.display.set_mode((976, 530))
+background = pygame.image.load("Pool-Table.png")
+background = pygame.transform.scale(background, (976, 530))
+running = True
 
-screen = pygame.display.set_mode((400, 750))
-background = pygame.image.load("district.png")
+while running:
+    screen.blit(background, (0, 0))
 
-screen.blit(background, (200, 375))
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            running = False
+    pygame.display.update()
+pygame.quit()
