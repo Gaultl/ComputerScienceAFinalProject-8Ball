@@ -1,0 +1,35 @@
+import pygame
+import math
+
+from pygame import KEYDOWN, K_RIGHT, K_LEFT, K_UP, K_DOWN
+
+pygame.init()
+screen = pygame.display.set_mode((903, 490))
+pygame.display.set_caption('Loading image')
+
+pool_table = pygame.image.load('Pool-Table.png')
+pool_ball = pygame.image.load('11-Ball.png')
+pool_ball1 = pygame.image.load('3-Ball.png')
+x = 0
+y = 150
+while True:
+    screen.fill("black")
+    screen.blit(pool_table, (0,0))
+    screen.blit(pool_ball, (x, y))
+    # screen.blit(pool_ball1, (300, 200))
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+        if event.type == KEYDOWN:
+            if event.key == K_RIGHT:
+                x = x + 5
+            if event.key == K_LEFT:
+                x = x - 5
+            if event.key == K_UP:
+                y = y - 5
+            if event.key == K_DOWN:
+                y = y + 5
+        pygame.display.update()
