@@ -14,23 +14,31 @@ screen.blit(background, (0, 0))
 screen.blit(image, (100, 100))
 while running:
     angle = 0
+    center_x = 100
+    center_y = 100
     keys = pygame.key.get_pressed()
     if keys[pygame.K_RIGHT]:
-        angle += 90
+        angle += 100
         image = pygame.transform.rotate(mov_image, angle)
         rect = image.get_rect()
-        if angle > 90:
-
+        y = rect.height
+        # if angle > 90:
+        #     center_y -= y
         screen.blit(background, (0, 0))
-        screen.blit(image, (100, 100))
+        screen.blit(image, (center_x, center_y))
 
     if keys[pygame.K_LEFT]:
-        angle -= 90
+        angle -= 100
         image = pygame.transform.rotate(mov_image, angle)
         rect = image.get_rect()
         x = rect.width
-        screen.blit(background, (0, 0))
-        screen.blit(image, (100 - x, 100))
+        y = rect.height
+        if angle > 90:
+            screen.blit(background, (0, 0))
+            screen.blit(image, (center_x - x, center_y - y))
+        else:
+            screen.blit(background, (0, 0))
+            screen.blit(image, (center_x - x, center_y))
 
     for event in pygame.event.get():
         if event.type == QUIT:
