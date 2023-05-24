@@ -22,10 +22,12 @@ while running:
         image = pygame.transform.rotate(mov_image, angle)
         rect = image.get_rect()
         y = rect.height
-        # if angle > 90:
-        #     center_y -= y
-        screen.blit(background, (0, 0))
-        screen.blit(image, (center_x, center_y))
+        if abs(angle) > 90:
+            screen.blit(background, (0, 0))
+            screen.blit(image, (center_x, center_y - y))
+        else:
+            screen.blit(background, (0, 0))
+            screen.blit(image, (center_x, center_y))
 
     if keys[pygame.K_LEFT]:
         angle -= 100
@@ -33,7 +35,7 @@ while running:
         rect = image.get_rect()
         x = rect.width
         y = rect.height
-        if angle > 90:
+        if abs(angle) > 90:
             screen.blit(background, (0, 0))
             screen.blit(image, (center_x - x, center_y - y))
         else:
